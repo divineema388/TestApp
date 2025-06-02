@@ -1,0 +1,126 @@
+workflows:
+  android-workflow:
+    name: Android TUI App Build
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    
+    environment:
+      vars:
+        PACKAGE_NAME: "com.mk.tui"
+      java: 17
+      
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.android/build-cache
+        - $HOME/.gradle/caches
+        - $CM_BUILD_DIR/.gradle
+        
+    triggering:
+      events:
+        - push
+        - tag
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+        - pattern: main
+          include: true
+          source: true
+      tag_patterns:
+        - pattern: '*'
+          include: true
+
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+          
+      - name: Make gradlew executable
+        script: |
+          chmod +x gradlew
+          
+      - name: Clean project
+        script: |
+          ./gradlew clean
+          
+      - name: Run unit tests
+        script: |
+          ./gradlew test --continue
+          
+      - name: Run lint checks
+        script: |
+          ./gradlew lint
+          
+      - name: Build debug APK
+        script: |
+          ./gradlew assembleDebug
+          
+      - name: Build release APK (unsigned)
+        script: |
+          ./gradlew assembleRelease
+
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
+      - app/build/reports/lint-results*.html
+      - app/build/test-results/**/*.xml
+      
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com # <-- Add your email for build notifications
+        notify:
+          success: true
+          failure: true
+
+  # Alternative workflow for different branches or testing
+  android-test-workflow:
+    name: Android Test & Analysis
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    
+    environment:
+      java: 17
+      
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: feature/*
+          include: true
+          source: true
+          
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+          
+      - name: Make gradlew executable
+        script: |
+          chmod +x gradlew
+          
+      - name: Run unit tests with coverage
+        script: |
+          ./gradlew testDebugUnitTestCoverage
+          
+      - name: Run lint analysis
+        script: |
+          ./gradlew lintDebug
+          
+      - name: Build debug APK for testing
+        script: |
+          ./gradlew assembleDebug
+          
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
+      - app/build/reports/**
+      - app/build/test-results/**
+      
+    publishing:
+      email:
+        recipients:
+          - developer@example.com
+        notify:
+          success: false
+          failure: true

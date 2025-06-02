@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    
+    <!-- Button labels -->
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    
+    <string name="btn_add">+</string>
+    <string name="btn_subtract">-</string>
+    <string name="btn_multiply">×</string>
+    <string name="btn_divide">÷</string>
+    <string name="btn_equals">=</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_clear">C</string>
+    <string name="btn_delete">⌫</string>
+    
+    <!-- Display text -->
+    <string name="display_default">0</string>
+    <string name="error">Error</string>
+    
+    <!-- Content descriptions for accessibility -->
+    <string name="cd_number_zero">Number zero</string>
+    <string name="cd_number_one">Number one</string>
+    <string name="cd_number_two">Number two</string>
+    <string name="cd_number_three">Number three</string>
+    <string name="cd_number_four">Number four</string>
+    <string name="cd_number_five">Number five</string>
+    <string name="cd_number_six">Number six</string>
+    <string name="cd_number_seven">Number seven</string>
+    <string name="cd_number_eight">Number eight</string>
+    <string name="cd_number_nine">Number nine</string>
+    
+    <string name="cd_add">Add</string>
+    <string name="cd_subtract">Subtract</string>
+    <string name="cd_multiply">Multiply</string>
+    <string name="cd_divide">Divide</string>
+    <string name="cd_equals">Equals</string>
+    <string name="cd_decimal">Decimal point</string>
+    <string name="cd_clear">Clear</string>
+    <string name="cd_delete">Delete</string>
+    <string name="cd_display">Calculator display</string>
+</resources>

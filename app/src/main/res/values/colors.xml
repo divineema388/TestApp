@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary theme colors -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Background colors -->
+    <color name="background">#F5F5F5</color>
+    <color name="display_background">#FFFFFF</color>
+    <color name="display_text">#212121</color>
+
+    <!-- Button colors -->
+    <color name="number_button">#FFFFFF</color>
+    <color name="number_button_pressed">#E0E0E0</color>
+    <color name="number_button_text">#212121</color>
+
+    <color name="operator_button">#FF9800</color>
+    <color name="operator_button_pressed">#F57C00</color>
+    <color name="operator_button_text">#FFFFFF</color>
+
+    <color name="function_button">#9E9E9E</color>
+    <color name="function_button_pressed">#757575</color>
+    <color name="function_button_text">#FFFFFF</color>
+
+    <color name="equals_button">#4CAF50</color>
+    <color name="equals_button_pressed">#388E3C</color>
+    <color name="equals_button_text">#FFFFFF</color>
+
+    <!-- Additional colors -->
+    <color name="shadow_light">#40000000</color>
+    <color name="shadow_dark">#80000000</color>
+</resources>
